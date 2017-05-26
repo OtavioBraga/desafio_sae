@@ -52,6 +52,10 @@ class Purchase(models.Model):
     def __str__(self):
         return self.product.name
 
+    def unit_price(self):
+        unit_price = self.value / self.quantity
+        return round(unit_price, 2)
+
     class Meta:
         verbose_name = 'Compra'
         verbose_name_plural = 'Compras'

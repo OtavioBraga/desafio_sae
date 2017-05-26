@@ -1,13 +1,36 @@
- version: '2'
- services:
-   db:
-     image: postgres
-   web:
-     build: .
-     command: ['python', 'estoque/manage.py', 'runserver', '0.0.0.0:8000']
-     volumes:
-       - .:/estoque
-     ports:
-       - "8000:8000"
-     depends_on:
-       - db
+version: '2'
+services:
+  db:
+   image: postgres
+
+  web:
+    build: .
+    command: ['python', 'estoque/manage.py', 'runserver', '0.0.0.0:8000']
+    volumes:
+     - .:/estoque
+    ports:
+     - "8000:8000"
+    depends_on:
+     - db
+
+  worker:
+    build: .
+    command: celery --workdir=estoque -A estoque worker 
+    volumes:
+     - .:/estoque
+    environment:
+        - RABBITMQ_DEFAULT_USER=admin
+        - RABBITMQ_DEFAULT_PASS=mypass
+    depends_on:
+    - db
+
+  # RabbitMQ
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:3.6.0
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=mypass
+    ports:
+      - "5672:5672"  # we forward this port because it's useful for debugging
+      - "15672:15672"  # here, we can access rabbitmq management plugin

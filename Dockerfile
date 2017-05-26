@@ -5,3 +5,4 @@ WORKDIR /estoque
 ADD requirements.txt /estoque/
 RUN pip install -r requirements.txt
 ADD . /estoque/
+WORKDIR /estoque

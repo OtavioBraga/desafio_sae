@@ -11,7 +11,7 @@ class PurchaseAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'quantity')
+    list_display = ('name', 'quantity', 'average_coast')
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Purchase, PurchaseAdmin)
