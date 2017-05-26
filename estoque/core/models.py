@@ -18,7 +18,7 @@ class Product(models.Model):
         null=True
     )
 
-    quantity = models.IntegerField('Quantidade', default=1)
+    quantity = models.IntegerField('Quantidade', default=0)
 
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
