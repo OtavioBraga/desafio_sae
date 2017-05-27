@@ -73,3 +73,6 @@ class Task(models.Model):
 
     def info(self):
         return AsyncResult(id=self.task_id).info
+
+    class Meta:
+        ordering = ["-id"]
