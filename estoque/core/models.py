@@ -1,5 +1,6 @@
 from celery.result import AsyncResult
 from datetime import datetime
+from django.utils import timezone
 from django.db import models
 
 
@@ -46,7 +47,7 @@ class Purchase(models.Model):
 
     purchase_date = models.DateField(
         'Data da compra',
-        default=datetime.now()
+        default=timezone.now()
     )
 
     modified_date = models.DateTimeField(auto_now=True)
@@ -71,4 +72,4 @@ class Task(models.Model):
         return AsyncResult(id=self.task_id).status
 
     def info(self):
-        return AsyncResult(id=self.task_id).result
+        return AsyncResult(id=self.task_id).info
