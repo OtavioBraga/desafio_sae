@@ -4,8 +4,6 @@ from django.views import generic
 from .models import Purchase, Product, Task
 from .forms import NewProductForm, NewPurchaseForm
 
-from celery.task.control import inspect
-
 
 
 # Mixins-----------------------------------------------------------------------
