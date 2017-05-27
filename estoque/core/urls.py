@@ -20,6 +20,10 @@ urlpatterns = [
         view=views.ListProductsView.as_view(),
         name='products-list'),
 
+    url(regex=r'^products/(?P<pk>[^/]+)$',
+        view=views.EditProductView.as_view(),
+        name='edit-product'),
+
     url(regex=r'^products/new/$',
         view=views.NewProductView.as_view(),
         name='new-product'),

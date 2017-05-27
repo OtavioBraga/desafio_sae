@@ -36,6 +36,14 @@ class NewProductView(LoginRequiredMixin, generic.CreateView):
     form_class = NewProductForm
 
 
+class EditProductView(LoginRequiredMixin, generic.UpdateView):
+    login_url = '/login/'
+    template_name = 'edit_product.html'
+    success_url = '/manage/products/'
+    queryset = Product.objects
+    form_class = NewProductForm
+
+
 class NewPurchaseView(LoginRequiredMixin, generic.CreateView):
     login_url = '/login/'
     template_name = 'new_purchase.html'
@@ -46,11 +54,9 @@ class NewPurchaseView(LoginRequiredMixin, generic.CreateView):
         return {'product': self.kwargs['pk']}
 
 
-class TasksView(LoginRequiredMixin, generic.TemplateView):
+class TasksView(LoginRequiredMixin, generic.ListView):
     login_url = '/login/'
     template_name = 'list_tasks.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(TasksView, self).get_context_data(**kwargs)
-        context['tasks'] = Task.objects.all()
-        return context
+    context_object_name = 'tasks'
+    model = Task
+    paginate_by = 20

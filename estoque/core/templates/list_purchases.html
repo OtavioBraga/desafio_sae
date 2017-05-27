@@ -4,6 +4,13 @@
 <h1 class="mb-3">Listar Compras</h1>
 <div class="row">
   <div class="col-12">
+    {% if not purchases %}
+      <br>
+      <h3>Nenhuma compra feita ainda.</h3>
+      <h5>Se você fizer uma nova compra ela aparecerá aqui</h5>
+      <br>
+      <a href="{%url 'new-purchase' %}" class="btn btn-info btn-lg">Nova compra</a>
+    {% endif %}
     {% regroup purchases by purchase_date|date:"M Y" as purchases_by_day %}
     {% for day in purchases_by_day %}
     <div class="card mb-3">
@@ -35,8 +42,8 @@
     {% endfor %}
 </div>
 
-<div class="card">
-  {% if is_paginated %}
+{% if is_paginated %}
+  <div class="card">
   <div class="pagination">
     <span class="page-links mx-auto">
       {% if page_obj.has_previous %}
@@ -50,8 +57,8 @@
       {% endif %}
     </span>
   </div>
-  {% endif %}
-</div>
+  </div>
+{% endif %}
 
 </div>
 {% endblock content %}

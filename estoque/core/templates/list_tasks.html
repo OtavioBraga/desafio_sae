@@ -2,6 +2,13 @@
 
 {% block content %}
 <h1 class="mb-3">Listar Tasks</h1>
+{% if not tasks %}
+    <br>
+    <h3>Não há tasks na fila.</h3>
+    <h5>Quando você fizer uma nova compra, as tasks de calculo aparecerão aqui.</h5>
+    <br>
+    <a href="{%url 'new-purchase' %}" class="btn btn-info btn-lg">Nova compra</a>
+{% else %}
 <div class="card">
     <table class="table table-striped table-hover mb-0">
     <thead>
@@ -30,4 +37,23 @@
     </tbody>
 </table>
 </div>
+{% endif %}
+
+{% if is_paginated %}
+  <div class="card">
+  <div class="pagination">
+    <span class="page-links mx-auto">
+      {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
+      {% endif %}
+      <span class="page-current">
+          Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+      </span>
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">próxima</a>
+      {% endif %}
+    </span>
+  </div>
+  </div>
+{% endif %}
 {% endblock content %}
