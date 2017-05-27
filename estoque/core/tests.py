@@ -38,8 +38,8 @@ class ProductCreateViewTestCase(TestCase):
     '''
         Test for product create view
         This test case test get(200) and create(302)
-        It also asserts that the view call the database only one time when 
-        saving a new product.
+        It also asserts that the view call the database only one time
+        when saving a new product.
     '''
     def setUp(self):
         self.user = UserFactory()
@@ -100,8 +100,8 @@ class PurchaseCreateViewTestCase(TestCase):
     '''
         Test for purchase create view
         This test case test get(200) and create(302)
-        It also asserts that the view call the database only one time when 
-        saving a new purchase.
+        It also asserts that the view call the database only one time
+        when saving a new purchase.
     '''
     def setUp(self):
         self.user = UserFactory()
