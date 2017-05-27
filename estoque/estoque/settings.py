@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j-91og1z!f2abhs0na9yx!tpayss@n(p%dwqmms+-d277jl2s@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", True)
 
 ALLOWED_HOSTS = []
 
@@ -131,4 +131,8 @@ STATIC_URL = '/static/'
 # The correct hosts
 ALLOWED_HOSTS = ['*']
 
-CELERY_TRACK_STARTED=True
+# Celery config
+CELERY_TRACK_STARTED = True
+RABBITMQ_USER = os.environ.get("RABBITMQ_USER")
+RABBITMQ_PASS = os.environ.get("RABBITMQ_PASS")
+CELERY_BROKER_URL = 'amqp://{}:{}@rabbit:5672/'.format(RABBITMQ_USER, RABBITMQ_PASS)
