@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.test import RequestFactory
 from django.test import TestCase
+from django.contrib.messages.storage.fallback import FallbackStorage
 
 from unittest.mock import patch, MagicMock
 
@@ -58,6 +59,9 @@ class ProductCreateViewTestCase(TestCase):
         }
         request = self.factory.post(reverse('new-product'), data)
         request.user = self.user
+        setattr(request, 'session', 'session')
+        messages = FallbackStorage(request)
+        setattr(request, '_messages', messages)
         response = NewProductView.as_view()(request)
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Product.save.called)

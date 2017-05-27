@@ -12,6 +12,7 @@ def calculate_average_price(self, product_id):
     The calc is made based on the coast of all purchases from a product
     divided by the all units purchsed.
     '''
+    sleep(60)
     values = Purchase.objects.filter(
         product_id=product_id
     ).aggregate(Sum('value'), Sum('quantity'))
@@ -22,4 +23,3 @@ def calculate_average_price(self, product_id):
     product = Product.objects.get(id=product_id)
     product.average_coast = average_coast
     product.save()
-    sleep(60)

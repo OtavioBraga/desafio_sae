@@ -30,7 +30,12 @@
                 <p class="card-text">Preço Unitário: R$ {{ purchase.unit_price }}</p>
                 <p class="card-text">Quantidade: {{ purchase.quantity }}</p>
                 <p class="card-text">Valor Total: R$ {{ purchase.value }}</p>
-                <p class="card-text">Preço médio: R$ {{ purchase.product.average_coast }}</p>
+                <p class="card-text">Preço médio:
+                {% if purchase.product.average_coast %}
+                    R$ {{ purchase.product.average_coast }}
+                {% else %}
+                    Não calculado
+                {% endif %}</p>
               </div>
             </div>
             </div>

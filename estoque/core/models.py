@@ -8,7 +8,8 @@ class Product(models.Model):
         'Nome do produto',
         max_length=100,
         blank=False,
-        null=False
+        null=False,
+        unique=True
     )
 
     average_coast = models.DecimalField(

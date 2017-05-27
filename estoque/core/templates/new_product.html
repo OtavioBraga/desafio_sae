@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="mb-3">Novo produto</h1>
+<h1 class="mb-3">Novo Produto</h1>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+            <a class="close" data-dismiss="alert">×</a>
+            {{ message|safe }}
+        </div>
+    {% endfor %}
+{% endif %}
 <div class="card">
     <div class="card-block">
          <form action="" method="POST">
@@ -9,8 +17,10 @@
             {% csrf_token %} 
                 <label for="name">Nome do produto</label>
                 {{ form.name }}
+                <p>{{ form.name.errors.as_text }}</p>
             </div>
             <button type="submit" class="btn btn-primary">Adicionar produto</button>
+            <a href="{%url 'products-list' %}" class="btn btn-info ">Ver produtos</a>
           </form>
     </div>
 </div>

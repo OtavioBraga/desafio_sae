@@ -9,12 +9,16 @@
             {% csrf_token %} 
                 <label for="product">Produto</label>
                 {{ form.product }}
+                <p>{{ form.product.errors.as_text }}</p>
                 <label for="value">Valor</label>
                 {{ form.value }}
+                <p>{{ form.value.errors.as_text }}</p>
                 <label for="quantity">Quantidade</label>
                 {{ form.quantity }}
+                <p>{{ form.quantity.errors.as_text }}</p>
                 <label for="purchase_date">Data de compra</label>
                 {{ form.purchase_date }}
+                <p>{{ form.purchase_date.errors.as_text }}</p>
             </div>
             <button type="submit" class="btn btn-primary">Adicionar compra</button>
           </form>

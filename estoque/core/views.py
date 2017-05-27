@@ -1,3 +1,4 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 
@@ -29,11 +30,12 @@ class ListProductsView(LoginRequiredMixin, generic.ListView):
     paginate_by = 30
 
 
-class NewProductView(LoginRequiredMixin, generic.CreateView):
+class NewProductView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
     login_url = '/login/'
     template_name = 'new_product.html'
-    success_url = '/manage/products/'
+    success_url = '/manage/products/new/'
     form_class = NewProductForm
+    success_message = "%(name)s foi adicionado com sucesso"
 
 
 class EditProductView(LoginRequiredMixin, generic.UpdateView):
