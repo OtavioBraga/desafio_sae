@@ -3,7 +3,7 @@ set -e
 cmd="$@"
 
 echo 'Waiting for postgres'
-sleep 10
+sleep 20
 
 echo "Migrating database"
 python estoque/manage.py migrate
