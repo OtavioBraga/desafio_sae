@@ -12,7 +12,15 @@
     </thead>
     <tbody>
         {% for task in tasks %}
-        <tr>
+        <tr {% if task.status == 'SUCCESS' %}  
+                class = 'bg-success' 
+            {% elif task.status == 'PENDING' %}
+                class = 'bg-warning'
+            {% elif task.status == 'FAILURE' %}
+                class = 'bg-danger'
+            {% elif task.status == 'STARTED' %}
+                class = 'bg-info'
+            {% endif %}>
             <th scope="row">{{ task.task_id }}</th>
             <td>{{ task.info }}</td>
             <td>{{ task.status }}</td>
