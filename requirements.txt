@@ -2,5 +2,6 @@ Django==1.11.1
 psycopg2==2.7.1
 pytz==2017.2
 celery==4.0.2
-ipdb
-redis
+ipdb==0.10.3
+redis==2.10.5
+factory-boy==2.8.1
