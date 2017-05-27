@@ -39,4 +39,4 @@ Caso a solução acima não funcione, tente deletar todos os contêineres e come
 - ```docker-compose rm```
  - ```docker-compose up```
 
-Lembrando que estes comandos devem utilizados dentro da pasta do projeto.
+Lembrando que estes comandos devem ser utilizados dentro da pasta do projeto.
