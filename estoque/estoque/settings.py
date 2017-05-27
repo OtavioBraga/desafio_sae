@@ -130,3 +130,5 @@ STATIC_URL = '/static/'
 # Only for debug and test mode, change this on production to allow
 # The correct hosts
 ALLOWED_HOSTS = ['*']
+
+CELERY_TRACK_STARTED=True

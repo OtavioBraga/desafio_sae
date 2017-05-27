@@ -6,10 +6,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <link href="css/site.css" rel="stylesheet">
   <script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.js"></script>
+  <style>
+    html,
+    body,
+    h1, h2, h3, h4, h5, h6, h7 {
+        font-family: 'Ubuntu', sans-serif !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,18 +31,22 @@
             <a class="navbar-brand" href="#">Estoque</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="listar-produtos.html">Listar Produtos<span class="sr-only">(current)</span></a>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" id="comprasMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produtos</a>
+                        <div class="dropdown-menu" aria-labelledby="comprasMenuLink">
+                            <a class="dropdown-item active" href="{% url 'products-list' %}">Listar Produtos</a>
+                            <a class="dropdown-item" href="{% url 'new-product' %}">Novo Produto</a>
+                        </div>
                     </li>
                     <li class="nav-item active dropdown">
                         <a class="nav-link dropdown-toggle" id="comprasMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compras</a>
                         <div class="dropdown-menu" aria-labelledby="comprasMenuLink">
-                            <a class="dropdown-item active" href="listar-compras.html">Listar Compras</a>
-                            <a class="dropdown-item" href="nova-compra.html">Nova Compra</a>
+                            <a class="dropdown-item active" href="{% url 'purchases-list' %}">Listar Compras</a>
+                            <a class="dropdown-item" href="{% url 'new-purchase' %}">Nova Compra</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="listar-tasks.html">Listar Tasks</a>
+                        <a class="nav-link" href="{% url 'tasks' %}">Listar Tasks</a>
                     </li>
                 </ul>
             </div>

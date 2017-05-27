@@ -5,13 +5,21 @@ from celery import Celery
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'estoque.settings')
 
-app = Celery('estoque', broker='amqp://admin:mypass@rabbit:5672/')
+app = Celery(
+    'estoque',
+    backend='redis://redis:6379/0',
+    broker='amqp://admin:mypass@rabbit:5672/'
+)
 
 # Using a string here means the worker don't have to serialize
 # the configuration object to child processes.
 # - namespace='CELERY' means all celery-related configuration keys
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
+
+app.conf.update(
+    CELERY_TRACK_STARTED=True
+)
 
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()

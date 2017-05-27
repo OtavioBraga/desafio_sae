@@ -15,7 +15,7 @@ services:
 
   worker:
     build: .
-    command: celery --workdir=estoque -A estoque worker 
+    command: celery --workdir=estoque -A estoque worker -E
     volumes:
      - .:/estoque
     environment:
@@ -23,6 +23,7 @@ services:
         - RABBITMQ_DEFAULT_PASS=mypass
     depends_on:
     - db
+    - rabbit
 
   # RabbitMQ
   rabbit:
@@ -34,3 +35,6 @@ services:
     ports:
       - "5672:5672"  # we forward this port because it's useful for debugging
       - "15672:15672"  # here, we can access rabbitmq management plugin
+
+  redis:
+    image: redis:3.0

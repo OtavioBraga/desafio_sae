@@ -1,3 +1,4 @@
+from celery.result import AsyncResult
 from datetime import datetime
 from django.db import models
 
@@ -29,6 +30,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
+        ordering = ["-created_date"]
 
 
 class Purchase(models.Model):
@@ -42,7 +44,7 @@ class Purchase(models.Model):
 
     quantity = models.IntegerField('Quantidade', default=1)
 
-    purchase_date = models.DateTimeField(
+    purchase_date = models.DateField(
         'Data da compra',
         default=datetime.now()
     )
@@ -59,3 +61,14 @@ class Purchase(models.Model):
     class Meta:
         verbose_name = 'Compra'
         verbose_name_plural = 'Compras'
+        ordering = ["-purchase_date"]
+
+
+class Task(models.Model):
+    task_id = models.CharField('Task Id', max_length=120)
+
+    def status(self):
+        return AsyncResult(id=self.task_id).status
+
+    def info(self):
+        return AsyncResult(id=self.task_id).result
