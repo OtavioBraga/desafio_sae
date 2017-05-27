@@ -1,7 +1,6 @@
 from celery.result import AsyncResult
-from datetime import datetime
-from django.utils import timezone
 from django.db import models
+from django.utils import timezone
 
 
 class Product(models.Model):
@@ -47,7 +46,7 @@ class Purchase(models.Model):
 
     purchase_date = models.DateField(
         'Data da compra',
-        default=timezone.now()
+        default= timezone.now
     )
 
     modified_date = models.DateTimeField(auto_now=True)

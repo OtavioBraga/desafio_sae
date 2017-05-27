@@ -5,6 +5,7 @@ services:
 
   web:
     build: .
+    entrypoint: ['/entrypoint.sh']
     command: ['python', 'estoque/manage.py', 'runserver', '0.0.0.0:8000']
     volumes:
      - .:/estoque

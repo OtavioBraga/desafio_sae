@@ -5,7 +5,6 @@ from .models import Purchase, Product, Task
 from .forms import NewProductForm, NewPurchaseForm
 
 
-
 # Mixins-----------------------------------------------------------------------
 class UserObjectsMixin(object):
     def get_queryset(self):
@@ -15,6 +14,7 @@ class UserObjectsMixin(object):
 
 # Views------------------------------------------------------------------------
 class ListPurchasesView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
     template_name = 'list_purchases.html'
     context_object_name = 'purchases'
     model = Purchase
@@ -22,6 +22,7 @@ class ListPurchasesView(LoginRequiredMixin, generic.ListView):
 
 
 class ListProductsView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
     template_name = 'list_products.html'
     context_object_name = 'products'
     model = Product
@@ -29,14 +30,14 @@ class ListProductsView(LoginRequiredMixin, generic.ListView):
 
 
 class NewProductView(LoginRequiredMixin, generic.CreateView):
-    """docstring for CreateTopicView"""
+    login_url = '/login/'
     template_name = 'new_product.html'
     success_url = '/manage/products/'
     form_class = NewProductForm
 
 
 class NewPurchaseView(LoginRequiredMixin, generic.CreateView):
-    """docstring for CreateTopicView"""
+    login_url = '/login/'
     template_name = 'new_purchase.html'
     success_url = '/manage/purchases/'
     form_class = NewPurchaseForm
@@ -46,7 +47,7 @@ class NewPurchaseView(LoginRequiredMixin, generic.CreateView):
 
 
 class TasksView(LoginRequiredMixin, generic.TemplateView):
-    # login_url = '/login/'
+    login_url = '/login/'
     template_name = 'list_tasks.html'
 
     def get_context_data(self, **kwargs):

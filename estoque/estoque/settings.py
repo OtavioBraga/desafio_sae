@@ -127,6 +127,8 @@ AUTH_USER_MODEL = 'users.User'
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = 'purchases-list'
+
 # Only for debug and test mode, change this on production to allow
 # The correct hosts
 ALLOWED_HOSTS = ['*']

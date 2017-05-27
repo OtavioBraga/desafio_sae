@@ -5,4 +5,6 @@ WORKDIR /estoque
 ADD requirements.txt /estoque/
 RUN pip install -r requirements.txt
 ADD . /estoque/
-WORKDIR /estoque
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh 
+WORKDIR /estoque/
