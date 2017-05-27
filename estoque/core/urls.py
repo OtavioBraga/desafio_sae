@@ -8,7 +8,7 @@ urlpatterns = [
         name='purchases-list'),
 
     url(regex=r'^purchases/new/$',
-        kwargs={'pk': 3},
+        kwargs={'pk': 0},
         view=views.NewPurchaseView.as_view(),
         name='new-purchase'),
 
