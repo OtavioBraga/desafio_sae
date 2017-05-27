@@ -18,8 +18,14 @@ Para instalar essa aplicação, são necessárias duas dependências:
  - Docker compose
 
 ### Instação do docker e do docker compose
-Para instalar estas dependências é recomendade utilizar o guia disponibilizado na docuemtanção das ferramentas
+Para instalar estas dependências é recomendade utilizar o guia disponibilizado na docuemtanção das ferramentas.
  - Docker https://docs.docker.com/engine/installation/ 
  - Docker compose https://docs.docker.com/compose/install/
 
 ## Executando a aplicação
+
+Após ter instalado o docker e o doger compose, clone este repositório e entre dentro da pasta. Observe se você está no nível que possui o arquivo docker-compose yml. Após isso execute o comando ```docker-compose up``` e aguarda até que o docker finalize todos os processos.
+
+Após o docker terminar de criar todos os containers é só acessar http://0.0.0.0:8000 para fazer login na aplicação. Você pode fazer login com o usuário **root** e a senha **root1234**.
+
+
