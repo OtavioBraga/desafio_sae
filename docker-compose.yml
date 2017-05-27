@@ -8,6 +8,9 @@ services:
     command: ['python', 'estoque/manage.py', 'runserver', '0.0.0.0:8000']
     volumes:
      - .:/estoque
+    environment:
+        - RABBITMQ_USER=admin
+        - RABBITMQ_PASS=mypass
     ports:
      - "8000:8000"
     depends_on:
@@ -19,8 +22,8 @@ services:
     volumes:
      - .:/estoque
     environment:
-        - RABBITMQ_DEFAULT_USER=admin
-        - RABBITMQ_DEFAULT_PASS=mypass
+        - RABBITMQ_USER=admin
+        - RABBITMQ_PASS=mypass
     depends_on:
     - db
     - rabbit
