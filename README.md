@@ -28,15 +28,3 @@ Após ter instalado o docker e o docker compose, clone este repositório e entre
 
 Após o docker terminar de criar todos os containers é só acessar http://0.0.0.0:8000 para fazer login na aplicação. Você pode fazer login com o usuário **root** e a senha **root1234**.
 
-## Possíveis erros
-
-O Servidor Django tem um sleep de 20 segundos até iniciar, este tempo é necessário pois o PostGres pode levar um certo tempo para iniciar. Caso você tenha iniciado a aplicação e ela não esteja funcionando. Pare todos os conteineres utilizando os seguintes comandos:
- - ```docker-compose stop```
- - ```docker-compose up```
-
-Caso a solução acima não funcione, tente deletar todos os contêineres e começar novamente utilizando os comandos:
-- ```docker-compose stop```
-- ```docker-compose rm```
- - ```docker-compose up```
-
-Lembrando que estes comandos devem ser utilizados dentro da pasta do projeto.
