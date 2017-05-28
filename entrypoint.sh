@@ -9,9 +9,6 @@ import sys
 import psycopg2
 try:
     conn = psycopg2.connect(dbname="postgres", user="postgres", password="postgres", host="db")
-    cursor = conn.cursor()
-    cursor.execute("select relname from pg_class where relkind='r' and relname !~ '^(pg_|sql_)';")
-    print(cursor.fetchall())
 except psycopg2.OperationalError:
     sys.exit(-1)
 sys.exit(0)
@@ -31,7 +28,6 @@ function has_users(){
 python << END
 import sys
 import psycopg2
-import  os
 conn = psycopg2.connect(dbname="postgres", user="postgres", password="postgres", host="db")
 cursor = conn.cursor()
 cursor.execute("select * from users_user")
