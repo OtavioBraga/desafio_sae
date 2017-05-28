@@ -38,7 +38,7 @@ class Purchase(models.Model):
     product = models.ForeignKey(Product)
 
     value = models.DecimalField(
-        "Valor da total da compra", 
+        "Valor da total da compra",
         max_digits=8,
         decimal_places=2,
     )
@@ -47,7 +47,7 @@ class Purchase(models.Model):
 
     purchase_date = models.DateField(
         'Data da compra',
-        default= timezone.now
+        default=timezone.now
     )
 
     modified_date = models.DateTimeField(auto_now=True)

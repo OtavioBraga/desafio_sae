@@ -13,6 +13,7 @@ class NewProductForm(forms.ModelForm):
         model = Product
         fields = ('name',)
 
+
 class NewPurchaseForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):

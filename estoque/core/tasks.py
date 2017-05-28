@@ -8,7 +8,7 @@ from time import sleep
 def calculate_average_price(self, product_id):
     '''
     Take all purchases of a product and calculate the average coast.
-    The average coast may change if a new purchase is made. 
+    The average coast may change if a new purchase is made.
     The calc is made based on the coast of all purchases from a product
     divided by the all units purchsed.
     '''
